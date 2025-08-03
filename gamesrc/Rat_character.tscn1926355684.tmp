@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://pcjppmt78su6"]
+
+[ext_resource type="Script" uid="uid://b1ys6y4svvf15" path="res://rat_character.gd" id="1_3q5g3"]
+[ext_resource type="Texture2D" uid="uid://bnapjqa8p265m" path="res://spritesheet.png" id="2_3q5g3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44vwu"]
+atlas = ExtResource("2_3q5g3")
+region = Rect2(1, 210, 126, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8vle"]
+atlas = ExtResource("2_3q5g3")
+region = Rect2(127, 210, 126, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2r5b"]
+atlas = ExtResource("2_3q5g3")
+region = Rect2(0, 0, 533, 211)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxhg4"]
+atlas = ExtResource("2_3q5g3")
+region = Rect2(533, 0, 533, 211)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3q5g3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44vwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8vle")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2r5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxhg4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q5g3"]
+size = Vector2(100, 120)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_3q5g3")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.055, 0.055)
+sprite_frames = SubResource("SpriteFrames_3q5g3")
+animation = &"climb"
+
+[node name="DefaultCollision" type="CollisionShape2D" parent="."]
+scale = Vector2(0.3, 0.1)
+shape = SubResource("RectangleShape2D_3q5g3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="LadderRayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -10)
+collision_mask = 2
+hit_from_inside = true

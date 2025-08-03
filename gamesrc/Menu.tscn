@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://jlnnk0dswmiv"]
+
+[ext_resource type="Script" uid="uid://dpont8weimrid" path="res://menu_script.gd" id="1_ylpcl"]
+[ext_resource type="Texture2D" uid="uid://dplyq13lu6o3t" path="res://Menu_background.png" id="2_cx167"]
+[ext_resource type="FontFile" uid="uid://ko6nqh54sbaa" path="res://TerribleCursive.ttf" id="2_ylpcl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cx167"]
+texture = ExtResource("2_cx167")
+modulate_color = Color(0.899258, 0.899258, 0.899258, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cx167"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yleq"]
+bg_color = Color(0.682558, 0.135411, 0.52113, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylpcl"]
+bg_color = Color(0.501136, 0.0771927, 0.378643, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dolsu"]
+bg_color = Color(0.888798, 0.305489, 0.697029, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0.267759, 0.192809, 0.163231, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(0, 2)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -32.0
+offset_right = -1.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ylpcl")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cx167")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = 42.0
+offset_right = 130.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.858824, 0.823529, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.858824, 0.823529, 1)
+theme_override_colors/font_color = Color(0.985738, 0.859382, 0.82346, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.858824, 0.823529, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cx167")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5yleq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ylpcl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dolsu")
+text = "Begin"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -386.0
+offset_top = 113.0
+offset_right = 386.0
+offset_bottom = 325.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("2_ylpcl")
+theme_override_font_sizes/font_size = 155
+text = "Ratformer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_begin_pressed"]
