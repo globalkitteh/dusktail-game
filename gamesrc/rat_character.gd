@@ -22,13 +22,23 @@ func _ladder_climb(delta):
 	var direction := Vector2.ZERO
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up", "ui_down")
-	animated_sprite_2d.animation = "climb"
+	animated_sprite_2d.play("climb")
 	if direction: velocity = direction * SPEED /2
 	
-	else: velocity = Vector2.ZERO
+	else:
+		velocity = Vector2.ZERO
+		animated_sprite_2d.stop()
 
 func _movement(delta):
-	animated_sprite_2d.animation = "walk"
+	if Input.is_action_pressed("ui_right") :
+		animated_sprite_2d.play("walk")
+		animated_sprite_2d.flip_h = false
+	elif Input.is_action_pressed("left"):
+		animated_sprite_2d.play("walk")
+		animated_sprite_2d.flip_h = true
+	else:
+		animated_sprite_2d.stop()
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 

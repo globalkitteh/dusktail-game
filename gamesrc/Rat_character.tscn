@@ -58,11 +58,6 @@ animations = [{
 "name": &"climb",
 "speed": 20.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n2r5b")
@@ -89,8 +84,8 @@ animation = &"climb"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_44vwu")
-animation = &"walk"
-frame_progress = 0.9906
+animation = &"climb"
+frame_progress = 0.333333
 
 [node name="DefaultCollision" type="CollisionShape2D" parent="."]
 position = Vector2(36, -16)
