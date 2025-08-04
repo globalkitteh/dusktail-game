@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://pcjppmt78su6"]
+[gd_scene load_steps=11 format=3 uid="uid://pcjppmt78su6"]
 
 [ext_resource type="Script" uid="uid://b1ys6y4svvf15" path="res://rat_character.gd" id="1_3q5g3"]
 [ext_resource type="Texture2D" uid="uid://bnapjqa8p265m" path="res://spritesheet.png" id="2_3q5g3"]
@@ -45,6 +45,36 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_44vwu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8vle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qif6")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 20.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2r5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxhg4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 20.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3q5g3"]
 size = Vector2(146.667, 440)
 
@@ -55,7 +85,12 @@ script = ExtResource("1_3q5g3")
 position = Vector2(36.276, -16.0987)
 scale = Vector2(0.19112, 0.207595)
 sprite_frames = SubResource("SpriteFrames_3q5g3")
+animation = &"climb"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_44vwu")
 animation = &"walk"
+frame_progress = 0.9906
 
 [node name="DefaultCollision" type="CollisionShape2D" parent="."]
 position = Vector2(36, -16)
